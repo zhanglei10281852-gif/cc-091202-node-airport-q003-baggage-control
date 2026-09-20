@@ -1,1 +1,39 @@
-{"scenario":"减客后的行李卸载与离线扫描","timezone":"Asia/Shanghai","records":[{"bagTag":"7812345678","flightLegId":"CZ3102-20260912","passengerStatus":"OFFLOADED","container":"AKE12001CZ"},{"scanId":"scan-2","bagTag":"7812345678","action":"LOADED_AIRCRAFT","occurredAt":"2026-09-12T18:01:00+08:00","receivedAt":"2026-09-12T18:10:00+08:00"},{"scanId":"scan-1","bagTag":"7812345678","action":"LOADED_CONTAINER","container":"AKE12001CZ","occurredAt":"2026-09-12T17:55:00+08:00","receivedAt":"2026-09-12T18:12:00+08:00"}]}
+{
+  "scenario": "减客后的行李卸载与离线扫描",
+  "timezone": "Asia/Shanghai",
+  "flight": { "flightLegId": "CZ3102-20260912", "aircraftId": "B-2035", "route": "CAN-PKX" },
+  "records": [
+    { "type": "passenger", "passengerId": "P1001", "name": "ZHANG/SAN" },
+    { "type": "passenger", "passengerId": "P1002", "name": "LI/SI" },
+    { "type": "passenger", "passengerId": "P1003", "name": "WANG/WU" },
+    { "type": "bag", "bagTag": "7812345678", "passengerId": "P1002" },
+    { "type": "bag", "bagTag": "7812345679", "passengerId": "P1001" },
+    { "type": "bag", "bagTag": "7812345680", "passengerId": "P1003" },
+
+    { "type": "scan", "scanId": "acc-1", "bagTag": "7812345678", "action": "ACCEPTED", "occurredAt": "2026-09-12T16:40:00+08:00", "receivedAt": "2026-09-12T16:40:05+08:00", "actor": "checkin-01" },
+    { "type": "scan", "scanId": "acc-2", "bagTag": "7812345679", "action": "ACCEPTED", "occurredAt": "2026-09-12T16:41:00+08:00", "receivedAt": "2026-09-12T16:41:04+08:00", "actor": "checkin-01" },
+    { "type": "scan", "scanId": "acc-3", "bagTag": "7812345680", "action": "ACCEPTED", "occurredAt": "2026-09-12T16:42:00+08:00", "receivedAt": "2026-09-12T16:42:03+08:00", "actor": "checkin-02" },
+    { "type": "scan", "scanId": "srt-1", "bagTag": "7812345678", "action": "SORTED", "occurredAt": "2026-09-12T17:10:00+08:00", "receivedAt": "2026-09-12T17:10:02+08:00", "actor": "sorter-01" },
+    { "type": "scan", "scanId": "srt-2", "bagTag": "7812345679", "action": "SORTED", "occurredAt": "2026-09-12T17:11:00+08:00", "receivedAt": "2026-09-12T17:11:02+08:00", "actor": "sorter-01" },
+    { "type": "scan", "scanId": "srt-3", "bagTag": "7812345680", "action": "SORTED", "occurredAt": "2026-09-12T17:12:00+08:00", "receivedAt": "2026-09-12T17:12:02+08:00", "actor": "sorter-01" },
+
+    { "type": "scan", "scanId": "ld-2", "bagTag": "7812345679", "action": "LOADED_CONTAINER", "container": "AKE12001CZ", "occurredAt": "2026-09-12T17:58:00+08:00", "receivedAt": "2026-09-12T17:58:30+08:00", "actor": "ramp-01" },
+    { "type": "scan", "scanId": "scan-2", "bagTag": "7812345678", "action": "LOADED_AIRCRAFT", "position": "11P", "occurredAt": "2026-09-12T18:01:00+08:00", "receivedAt": "2026-09-12T18:10:00+08:00", "actor": "ramp-02" },
+    { "type": "scan", "scanId": "scan-1", "bagTag": "7812345678", "action": "LOADED_CONTAINER", "container": "AKE12001CZ", "occurredAt": "2026-09-12T17:55:00+08:00", "receivedAt": "2026-09-12T18:12:00+08:00", "actor": "ramp-01" },
+
+    { "type": "passengerStatus", "passengerId": "P1001", "status": "BOARDED", "operator": "gate-01", "at": "2026-09-12T18:20:00+08:00" },
+    { "type": "passengerStatus", "passengerId": "P1003", "status": "BOARDED", "operator": "gate-01", "at": "2026-09-12T18:21:00+08:00" },
+
+    { "type": "offload", "passengerId": "P1002", "operator": "gate-01", "reason": "no_show_at_gate", "at": "2026-09-12T18:25:00+08:00" },
+
+    { "type": "scan", "scanId": "scan-3", "bagTag": "7812345678", "action": "UNLOADED", "position": "11P", "occurredAt": "2026-09-12T18:40:00+08:00", "receivedAt": "2026-09-12T18:41:00+08:00", "actor": "ramp-02" },
+
+    { "type": "containerSwap", "oldContainerId": "AKE12001CZ", "newContainerId": "AKE12002CZ", "operator": "loadmaster-01", "reason": "uld_damaged", "at": "2026-09-12T18:45:00+08:00" },
+
+    { "type": "scan", "scanId": "scan-4", "bagTag": "7812345679", "action": "LOADED_CONTAINER", "container": "AKE12002CZ", "occurredAt": "2026-09-12T18:52:00+08:00", "receivedAt": "2026-09-12T18:53:00+08:00", "actor": "ramp-01" },
+
+    { "type": "scan", "scanId": "scan-5", "bagTag": "7812345680", "action": "LOADED_CONTAINER", "container": "AKE12003CZ", "occurredAt": "2026-09-12T18:05:00+08:00", "receivedAt": "2026-09-12T19:02:00+08:00", "actor": "gun-07" },
+    { "type": "scan", "scanId": "scan-5", "bagTag": "7812345680", "action": "LOADED_CONTAINER", "container": "AKE12003CZ", "occurredAt": "2026-09-12T18:05:00+08:00", "receivedAt": "2026-09-12T19:02:10+08:00", "actor": "gun-07" },
+    { "type": "scan", "scanId": "scan-6", "bagTag": "7812345680", "action": "LOADED_CONTAINER", "container": "AKE12004CZ", "occurredAt": "2026-09-12T18:06:00+08:00", "receivedAt": "2026-09-12T19:02:20+08:00", "actor": "gun-11" }
+  ]
+}
