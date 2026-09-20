@@ -1,1 +1,33 @@
-{"scenario":"减客后的行李卸载与离线扫描","timezone":"Asia/Shanghai","records":[{"bagTag":"7812345678","flightLegId":"CZ3102-20260912","passengerStatus":"OFFLOADED","container":"AKE12001CZ"},{"scanId":"scan-2","bagTag":"7812345678","action":"LOADED_AIRCRAFT","occurredAt":"2026-09-12T18:01:00+08:00","receivedAt":"2026-09-12T18:10:00+08:00"},{"scanId":"scan-1","bagTag":"7812345678","action":"LOADED_CONTAINER","container":"AKE12001CZ","occurredAt":"2026-09-12T17:55:00+08:00","receivedAt":"2026-09-12T18:12:00+08:00"}]}
+{
+  "scenario": "减客后的行李卸载、离线扫描补传与容器更换",
+  "timezone": "Asia/Shanghai",
+  "flight": {
+    "flightLegId": "CZ3102-20260912",
+    "aircraftId": "B-3015",
+    "holds": ["H1", "H2"]
+  },
+  "records": [
+    { "type": "checkin", "passengerId": "P1001", "name": "ZHANG/SAN", "bagTag": "7812345678", "at": "2026-09-12T17:30:00+08:00" },
+    { "type": "checkin", "passengerId": "P1002", "name": "LI/SI", "bagTag": "7812345679", "at": "2026-09-12T17:31:00+08:00" },
+    { "type": "board", "passengerId": "P1001", "at": "2026-09-12T17:40:00+08:00" },
+    { "type": "board", "passengerId": "P1002", "at": "2026-09-12T17:42:00+08:00" },
+
+    { "type": "scan", "scanId": "scan-3", "bagTag": "7812345679", "action": "LOADED_CONTAINER", "container": "AKE12001CZ", "occurredAt": "2026-09-12T17:58:00+08:00", "receivedAt": "2026-09-12T17:58:30+08:00", "source": "GUN-07" },
+
+    { "type": "offload-passenger", "passengerId": "P1001", "operator": "ops.chen", "reason": "旅客登机口临时减客", "at": "2026-09-12T18:05:00+08:00" },
+
+    { "type": "scan", "scanId": "scan-2", "bagTag": "7812345678", "action": "LOADED_AIRCRAFT", "occurredAt": "2026-09-12T18:01:00+08:00", "receivedAt": "2026-09-12T18:10:00+08:00", "source": "GUN-12" },
+    { "type": "scan", "scanId": "scan-1", "bagTag": "7812345678", "action": "LOADED_CONTAINER", "container": "AKE12001CZ", "occurredAt": "2026-09-12T17:55:00+08:00", "receivedAt": "2026-09-12T18:12:00+08:00", "source": "GUN-12" },
+
+    { "type": "replace-container", "container": "AKE12001CZ", "newContainer": "AKE12002CZ", "operator": "ops.chen", "reason": "AKE12001CZ 底板破损，更换集装器", "at": "2026-09-12T18:15:00+08:00" },
+
+    { "type": "scan", "scanId": "scan-4", "bagTag": "7812345678", "action": "OFFLOADED", "occurredAt": "2026-09-12T18:20:00+08:00", "receivedAt": "2026-09-12T18:20:10+08:00", "source": "GUN-03" },
+    { "type": "scan", "scanId": "scan-5", "bagTag": "7812345679", "action": "OFFLOADED", "occurredAt": "2026-09-12T18:26:00+08:00", "receivedAt": "2026-09-12T18:26:05+08:00", "source": "GUN-07" },
+    { "type": "scan", "scanId": "scan-6", "bagTag": "7812345679", "action": "LOADED_CONTAINER", "container": "AKE12002CZ", "occurredAt": "2026-09-12T18:31:00+08:00", "receivedAt": "2026-09-12T18:31:05+08:00", "source": "GUN-07" },
+    { "type": "scan", "scanId": "scan-7", "bagTag": "7812345679", "action": "LOADED_AIRCRAFT", "container": "AKE12002CZ", "occurredAt": "2026-09-12T18:36:00+08:00", "receivedAt": "2026-09-12T18:36:05+08:00", "source": "GUN-05" },
+
+    { "type": "scan", "scanId": "scan-8", "bagTag": "7812345679", "action": "LOADED_CONTAINER", "container": "AKE12001CZ", "occurredAt": "2026-09-12T18:33:00+08:00", "receivedAt": "2026-09-12T18:37:00+08:00", "source": "GUN-09" },
+
+    { "type": "scan", "scanId": "scan-2", "bagTag": "7812345678", "action": "LOADED_AIRCRAFT", "occurredAt": "2026-09-12T18:01:00+08:00", "receivedAt": "2026-09-12T18:40:00+08:00", "source": "GUN-12" }
+  ]
+}
